@@ -1,14 +1,28 @@
 package com.driver;
 
+import java.sql.SQLOutput;
+
 public class Pizza {
 
     private int price;
     private Boolean isVeg;
     private String bill;
+    private int addExtraCheese = 80;
+    private int addExtraToppings = 100;
+    private int bag = 20;
+    private boolean extraCheese = false;
+    private boolean extraToppings = false;
+    private boolean takeAway = false;
+    private int basePricePizza;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        // your code goes here
+        if(this.isVeg){
+            this.price = 300;
+        }else {
+            this.price = 400;
+        }
+        basePricePizza =this.price;
     }
 
     public int getPrice(){
@@ -16,19 +30,35 @@ public class Pizza {
     }
 
     public void addExtraCheese(){
-        // your code goes here
+        extraCheese = true;
+        this.price += addExtraCheese;
     }
 
     public void addExtraToppings(){
-        // your code goes here
+        extraToppings = true;
+        this.price+=addExtraToppings;
     }
 
     public void addTakeaway(){
-        // your code goes here
+        takeAway = true;
+        this.price+= bag;
     }
 
     public String getBill(){
         // your code goes here
-        return this.bill;
+        String bill ="";
+        System.out.println("Base Price of the Pizza: "+basePricePizza);
+        if(extraCheese){
+            bill+="Extra Cheese Added: "+addExtraCheese+"\n";
+        }
+        if(extraToppings){
+            bill+="Extra Toppings Added: "+addExtraToppings+"\n";
+        }
+        if (takeAway){
+            bill+="Take away Added: "+bag+"\n";
+        }
+        bill+="Total Price: "+this.price+"\n";
+        return bill;
+
     }
 }

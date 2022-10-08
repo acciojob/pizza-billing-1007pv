@@ -1,9 +1,10 @@
 package com.driver;
 
+import java.sql.SQLOutput;
+
 public class Main {
   public static void main(String[] args) {
-    DeluxePizza dp = new DeluxePizza(true);
-    System.out.println(dp.getPrice());
+    DeluxePizza dp = new DeluxePizza(false);
     dp.addTakeaway();
     dp.addExtraCheese();
     dp.addTakeaway();
