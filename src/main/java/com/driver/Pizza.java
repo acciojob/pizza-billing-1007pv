@@ -3,12 +3,11 @@ package com.driver;
 import java.sql.SQLOutput;
 
 public class Pizza {
-
     private int price;
     private Boolean isVeg;
     private String bill;
     private int addExtraCheese = 80;
-    private int addExtraToppings = 100;
+    private int addExtraToppings;
     private int bag = 20;
     private boolean extraCheese = false;
     private boolean extraToppings = false;
@@ -36,7 +35,14 @@ public class Pizza {
 
     public void addExtraToppings(){
         extraToppings = true;
-        this.price+=addExtraToppings;
+        if(extraCheese){
+            if(this.isVeg){
+                addExtraToppings=70;
+            }else {
+                addExtraToppings=120;
+            }
+            this.price+=addExtraToppings;
+        }
     }
 
     public void addTakeaway(){
